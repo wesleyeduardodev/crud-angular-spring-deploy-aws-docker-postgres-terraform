@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  postgres-db:
+    container_name: postgres-db
+    image: postgres:15
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "root"
+      POSTGRES_DB: "thehome"
+      TZ: "America/Sao_Paulo"
+    ports:
+      - "5432:5432"
+    networks:
+      - docker-network
+    restart: always
+
+  thehome-api:
+    build:
+      context: ../../backend-spring
+      dockerfile: Dockerfile.test
+    container_name: thehome-api
+    image: wesleyeduardodev/thehome-api:latest
+    environment:
+      SERVER_PORT: 3000
+      SPRING_PROFILES_ACTIVE: test
+      TZ: "America/Sao_Paulo"
+    ports:
+      - "80:3000"
+    depends_on:
+      - postgres-db
+    networks:
+      - docker-network
+    restart: always
+
+  thehome-angular:
+    build:
+      context: ../../frontend-angular
+      dockerfile: Dockerfile
+    image: wesleyeduardodev/thehome-angular
+    container_name: thehome-angular-container
+    ports:
+      - "4200:4200"
+    depends_on:
+      - thehome-api
+    networks:
+      - docker-network
+
+networks:
+  docker-network:
+    driver: bridge
