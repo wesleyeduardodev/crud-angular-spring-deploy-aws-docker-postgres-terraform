@@ -54,6 +54,7 @@
 
 ## Test
 - http://localhost/actuator/health
+- http://ec2-100-26-4-233.compute-1.amazonaws.com/actuator/health
 
 ## JAR
 - crud-api-0.0.1-SNAPSHOT.jar
