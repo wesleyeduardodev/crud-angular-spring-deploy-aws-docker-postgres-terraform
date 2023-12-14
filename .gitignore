@@ -6,3 +6,4 @@ deploy/postgres-data
 /deploy/terraform/.terraform.lock.hcl
 /deploy/terraform/terraform.tfstate
 deploy/terraform/.terraform.tfstate.lock.info
+deploy/terraform/terraform.tfstate.backup
