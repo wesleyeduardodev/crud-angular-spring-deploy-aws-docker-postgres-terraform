@@ -1,7 +1,7 @@
 version: '3'
 
 
-## Mellhor a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
+## TODO Melhorar a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
 
 services:
   postgres-db:

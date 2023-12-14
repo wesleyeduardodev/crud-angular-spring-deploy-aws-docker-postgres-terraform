@@ -50,7 +50,8 @@
 
 
 ## Para analisar
-- Uso de volumes no container do banco para não perder os dados. Sem usar a configuração de volumes se eu deletar o container do postgres e subir de novo irei perder meus dados. 
+- Uso de volumes no container do banco para não perder os dados. Sem usar a configuração de volumes se eu deletar o container do postgres e subir de novo irei perder meus dados.
+- Melhorar a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
 
 ## Anotações Gerais
 - Em cenários de aplicações reais avaliar usar a solução Amazon RDS Postgres por ex. Manter o banco isolado e seguro.
