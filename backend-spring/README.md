@@ -47,3 +47,10 @@
 
 ## JAr
 - thehome-api-spring-0.0.1-SNAPSHOT.jar
+
+
+## Para analisar
+- Uso de volumes no container do banco. Para que ao subir o banco novamente não perder os dados
+
+## Anotações Gerais
+- Em cenários de aplicações reais avaliar usar a solução Amazon RDS Postgres por ex. Manter o banco isolado e seguro.
