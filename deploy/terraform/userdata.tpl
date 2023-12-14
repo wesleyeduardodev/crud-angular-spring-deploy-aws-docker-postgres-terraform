@@ -26,8 +26,8 @@
     cd ~/project
 
 #clone your project from git repository
-    git clone https://github.com/wesleyeduardodev/thehome-api-spring
-    cd thehome-api-spring
+    git clone https://github.com/wesleyeduardodev/crud-angular-spring-deploy-aws-docker-postgres-terraform
+    cd crud-angular-spring-deploy-aws-docker-postgres-terraform
     git checkout master
     git pull
     cd deploy/docker

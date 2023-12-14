@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "root"
-      POSTGRES_DB: "thehome"
+      POSTGRES_DB: "crud"
       TZ: "America/Sao_Paulo"
     ports:
       - "15432:5432"
@@ -15,9 +15,9 @@ services:
       - docker-network
     restart: always
 
-  thehome-api:
-    container_name: thehome-api
-    image: wesleyeduardodev/thehome-api:latest
+  crud-api:
+    container_name: crud-api
+    image: wesleyeduardodev/crud-api:latest
     environment:
       SERVER_PORT: 3000
       SPRING_PROFILES_ACTIVE: prod
@@ -36,13 +36,13 @@ services:
           memory: 700M
     restart: always
 
-      #thehome-angular:
-      #image: wesleyeduardodev/thehome-angular:latest
-      #container_name: thehome-angular-container
+      #crud-angular:
+      #image: wesleyeduardodev/crud-angular:latest
+      #container_name: crud-angular
       #ports:
       #  - "4200:4200"
       #depends_on:
-      # - thehome-api
+      # - crud-api
       #networks:
     # - docker-network
 

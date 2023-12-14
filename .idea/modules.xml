@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/backend-spring/crud-api-clients.iml" filepath="$PROJECT_DIR$/backend-spring/crud-api-clients.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/crud-api-clients-angular-spring-aws-docker-postgres-terraform.iml" filepath="$PROJECT_DIR$/.idea/crud-api-clients-angular-spring-aws-docker-postgres-terraform.iml" />
     </modules>
   </component>

@@ -2,3 +2,6 @@
 .idea/misc.xml
 
 deploy/postgres-data
+/deploy/terraform/.terraform/
+/deploy/terraform/.terraform.lock.hcl
+/deploy/terraform/terraform.tfstate

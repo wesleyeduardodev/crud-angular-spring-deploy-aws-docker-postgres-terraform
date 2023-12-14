@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "root"
-      POSTGRES_DB: "thehome"
+      POSTGRES_DB: "crud"
       TZ: "America/Sao_Paulo"
     ports:
       - "5432:5432"
@@ -20,12 +20,12 @@ services:
       - docker-network
     restart: always
 
-  thehome-api:
+  crud-api:
     build:
-      context: ../../backend-spring
+      context: ../../backend
       dockerfile: Dockerfile.test
-    container_name: thehome-api
-    image: wesleyeduardodev/thehome-api:latest
+    container_name: crud-api
+    image: wesleyeduardodev/crud-api:latest
     environment:
       SERVER_PORT: 3000
       SPRING_PROFILES_ACTIVE: test
@@ -38,16 +38,16 @@ services:
       - docker-network
     restart: always
 
-  thehome-angular:
+  crud-angular:
     build:
-      context: ../../frontend-angular
+      context: ../../frontend
       dockerfile: Dockerfile
-    image: wesleyeduardodev/thehome-angular
-    container_name: thehome-angular-container
+    image: wesleyeduardodev/crud-angular
+    container_name: crud-angular
     ports:
       - "4200:4200"
     depends_on:
-      - thehome-api
+      - crud-api
     networks:
       - docker-network
 

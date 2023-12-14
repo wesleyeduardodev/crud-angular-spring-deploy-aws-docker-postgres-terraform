@@ -1,0 +1,7 @@
+version: "3"
+services:
+  crud-angular:
+    image: wesleyeduardodev/crud-angular
+    container_name: crud-angular
+    ports:
+      - "4200:4200"

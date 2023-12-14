@@ -1,4 +1,4 @@
-data "aws_ami" "thehome1_server_ami" {
+data "aws_ami" "crud_server_ami" {
   most_recent = true
   owners      = ["099720109477"]
 

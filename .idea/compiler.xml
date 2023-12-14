@@ -7,13 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="crud-api-clients" />
+        <module name="crud-api" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="backend" target="17" />
+      <module name="crud" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="crud-api-clients" options="-parameters" />
+      <module name="backend" options="-parameters" />
+      <module name="crud" options="-parameters" />
+      <module name="crud-api" options="-parameters" />
     </option>
   </component>
 </project>

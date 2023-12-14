@@ -1,7 +1,0 @@
-version: "3"
-services:
-  thehome-angular:
-    image: wesleyeduardodev/thehome-angular
-    container_name: thehome-angular-container
-    ports:
-      - "4200:4200"
