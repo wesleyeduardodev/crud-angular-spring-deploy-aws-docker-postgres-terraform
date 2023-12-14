@@ -1,4 +1,4 @@
 
 .idea/misc.xml
 
-.deploy/postgres-data
+deploy/postgres-data
