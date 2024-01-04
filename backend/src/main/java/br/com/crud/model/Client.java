@@ -32,9 +32,15 @@ public class Client {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
-    @Column(name = "updated at")
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     @Column(name = "birthday")
     private LocalDateTime birthday;
+
+    @PrePersist
+    public void beforeSave() {
+        setCreatedAt(LocalDateTime.now());
+        setUpdatedAt(LocalDateTime.now());
+    }
 }

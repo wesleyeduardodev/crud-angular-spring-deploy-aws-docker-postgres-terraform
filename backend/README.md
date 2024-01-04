@@ -1,7 +1,22 @@
 
-- Rodar Docker compose ambiente dev: docker compose up -d
-- Rodar Docker compose ambiente test: docker compose -f docker-compose-test.yml up -d
-- Rodar Docker compose ambiente prod: docker compose -f docker-compose-prod.yml up -d
+## Requisitos Gerais
+- Docker/WSL2 instalado e configurado no ambiente Windows
+- Java 17 configurado nas variáveis de ambiente do Windows
+- Maven 3+ configurado nas variáveis de ambiente do Windows
+
+## Executar aplicação localmente via linha de comando
+- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
+- Executar comando "mvn clean install" para gerar o target do projeto.
+- Ainda com o terminal na pasta backend, executar "docker compose up -d" para subir o banco de dados postgres
+- Entrar no diretório /target
+- Executar: java -jar crud-api-0.0.1-SNAPSHOT.jar
+- Swagger: http://localhost:8080/crud-api/swagger-ui.html
+
+## Executar aplicação localmente via IDE
+- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
+- Executar "docker compose up -d" para subir o banco de dados postgres
+- Subir via IDE
+- Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 - Gerar build da aplicação antes de gerar a imagem: mvn clean install
 - Gerar imagem da aplicação: docker build -t wesleyeduardodev/crud-api .
@@ -17,13 +32,16 @@
 - Enviar imagem para o DockerHub: docker push wesleyeduardodev/crud-api
 - Remover todos os containers: docker rm $(docker ps -a -q) -f
 - Remover todos as imagens: docker rmi $(docker images -q) -f
-- Remover todos os volumes: docker volume rm $(docker volume ls -qf dangling=true) 
+- Remover todos os volumes: docker volume rm $(docker volume ls -qf dangling=true)
+- docker compose up -d
+- docker compose -f docker-compose-test.yml up -d
+- docker compose -f docker-compose-prod.yml up -d
 - docker logs --follow crud-api
 - docker logs --follow postgres-db
 - docker logs --follow crud-angular
 
 
-## Permissões Usuário AWS
+## Permissões Usuário AWS necessárias para deploy
 - AmazonEC2ContainerRegistryFullAccess
 - AmazonEC2FullAccess
 - AmazonVPCFullAccess
