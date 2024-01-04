@@ -18,6 +18,13 @@
 - Subir via IDE
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
+## Executar aplicação localmente via Docker
+- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
+- Executar o comando "mvn clean install" para gerar o target do projeto.
+- Executar o comando "docker build -t wesleyeduardodev/crud-api ." para gerar a imagem da aplicação 
+- Executar "docker compose -f docker-compose-dev.yml up -d" para subir o banco de dados postgres e a aplicação
+- Swagger: http://localhost:8080/crud-api/swagger-ui.html
+
 - Gerar build da aplicação antes de gerar a imagem: mvn clean install
 - Gerar imagem da aplicação: docker build -t wesleyeduardodev/crud-api .
 - - Gerar imagem da aplicação: docker build -t wesleyeduardodev/crud-api -f Dockerfile.test .

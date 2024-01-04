@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres-db:5432/crud?currentSchema=public
+    username: "postgres"
+    password: "root"
+    driver-class-name: "org.postgresql.Driver"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+crud:
+  api:
+    user: admin
+    password: admin
+
+springdoc:
+  swagger-ui:
+    operations-sorter: method
+    path: "/crud-api/swagger-ui.html"
