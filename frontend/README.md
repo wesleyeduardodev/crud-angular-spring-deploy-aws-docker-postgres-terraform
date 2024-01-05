@@ -25,6 +25,7 @@
 - Após o deploy do backend, copie o DNS público gerado
 - ![img.png](resource/readme/ec2.png)
 - Abra o arquivo frontend/src/app/config/api.config.ts e cole o valor do DNS público na variável URL_PROD
+- Importante, colocar o "http:/" antes do DNS. Ficará da seguinte forma como um exemplo: http://ec2-3-239-241-205.compute-1.amazonaws.com
 - Altere o valor da variável baseUrl para receber o valor da varivável URL_PROD
 - Siga os demais passos abaixo
 
