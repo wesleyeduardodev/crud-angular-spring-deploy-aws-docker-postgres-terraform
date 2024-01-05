@@ -55,7 +55,7 @@
 ## Diagrama do deploy na AWS
 
 - A Imagem abaixo ilustrará o fluxo de criação dos recursos
-- ![crud-api.jpg](deploy%2Fdiagram%2Fcrud-api.jpg)
+- ![img.png](readme-imgs/crud-api.jpg)
 
 ## Deploy na AWS usando Terraform
 - Ter a imagem da applicação já enviada para o Docker Hub
