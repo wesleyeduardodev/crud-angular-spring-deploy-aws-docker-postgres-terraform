@@ -1,4 +1,5 @@
 
 ## Objetivos do projeto
 - O foco desse projeto é testar o deploy de uma aplicação estilo CRUD dentro da AWS usando Angular, Spring, Docker, Postgres e Terraform. Portando, o projeto da API não seguirá os padrôes RESTFul, tampouco aspectos como clean code, SOLID, Testes Unitários/Integração Design Patterns e etc.
-- Cada projeto (backend e frontend) tem seu próprio README com algumas anotações (Em fase de organização)
+- O README do projeto backend contém anotações gerais sobre a API CRUD de clientes e passo a passo do deploy na AWS usando uam instância EC2
+- O README do projeto frontend contém anotações gerais sobre a Aplicação Angular versão 16 e instruções de deploy na AWS usando o recurso Amazon S3

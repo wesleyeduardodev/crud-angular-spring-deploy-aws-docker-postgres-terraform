@@ -1,12 +1,9 @@
 # **Projeto em Desenvolvimento**
 
-# Onde o projeto web está armazenado ?
-- AmazonS3 
-
 # Onde o projeto backend  está armazenado ?
 - Amazon EC2
 
-## Executar na mesma rede do container do backend
+## Ajuste para subir via Docker
 - No arquivo package.json, inserir: "start": "ng serve --host 0.0.0.0",
 
 # Publicando no AmazonS3
