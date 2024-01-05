@@ -5,7 +5,7 @@
 - Maven 3+ configurado nas variáveis de ambiente do Windows
 
 ## Executar aplicação localmente via linha de comando
-- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
+- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend)
 - Executar comando "mvn clean install" para gerar o target do projeto.
 - Ainda com o terminal na pasta backend, executar "docker compose up -d" para subir o banco de dados postgres
 - Entrar no diretório /target
@@ -13,7 +13,7 @@
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Executar aplicação localmente via IDE
-- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
+- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend)
 - Executar "docker compose up -d" para subir o banco de dados postgres
 - Subir via IDE
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
@@ -24,6 +24,12 @@
 - Executar o comando "docker build -t wesleyeduardodev/crud-api ." para gerar a imagem da aplicação 
 - Executar "docker compose -f docker-compose-dev.yml up -d" para subir o banco de dados postgres e a aplicação
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
+
+## Executar aplicação via Shell Script e Docker
+- Abrir pasta backend (Não é pelo terminal)
+- Executar o arquivo run-backend.sh
+
+## Dados abaixo ainda estão sendo organizados.....
 
 - Gerar build da aplicação antes de gerar a imagem: mvn clean install
 - Gerar imagem da aplicação: docker build -t wesleyeduardodev/crud-api .
