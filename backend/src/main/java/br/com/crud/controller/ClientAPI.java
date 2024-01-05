@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api/v1/clients")
-@CrossOrigin(origins = {"http://localhost:4200", "http://crud-angular-app.s3-website-us-east-1.amazonaws.com", "https://crud-web.vercel.app", "http://crud-web.vercel.app"})
+@CrossOrigin(origins = {"*"})
 public interface ClientAPI {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
