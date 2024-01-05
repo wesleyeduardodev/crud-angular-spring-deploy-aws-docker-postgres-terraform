@@ -1,6 +1,6 @@
 
 ## Requisitos Gerais
-- Docker/WSL2 instalado e configurado no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
+- Docker/WSL2 instalado e configurado e executando no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
 - Java 17 configurado nas variáveis de ambiente do Windows. Sugestão(https://corretto.aws/downloads/latest/amazon-corretto-17-x64-windows-jdk.zip)
 - Maven 3+ configurado nas variáveis de ambiente do Windows. Sugestão(https://dlcdn.apache.org/maven/maven-3/3.9.6/source/apache-maven-3.9.6-src.zip)
 
@@ -30,10 +30,83 @@
 - Opção 2: Abrir um terminal no diretório backend en e executar: sh run-backend.sh
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
+## Enviar imagem a aplicação para o Docker Hub
+- Criar um conta no Docker Hub
+- Abra um terminal no diretório backend
+- Execute o comando "mvn clean install" para gerar o JAR da aplicação
+- Execute o comando "docker build -t wesleyeduardodev/crud-api ." para gerar a imagem da aplicação
+- Abra um terminal do WSL2/Linux ou até mesmo do PowerShell/CMD e digite o comando "docker images" para verificar a iamgem criada
+- ![img.png](readme-imgs/consulta-imamgem-aplicao.png)
+- Execute o comando "docker login" para logar/sincronizar com a conta no Docker Hub
+- ![img.png](readme-imgs/docker-login.png)
+- Execute o comando "docker push wesleyeduardodev/crud-api" para enviar a imagem para o Docker Hub
+- ![img.png](readme-imgs/envio-imagem-docker-hub.png)
+- ![img.png](readme-imgs/imagem-docker-hub.png)
+
+## Pontos importantes sobre o deploy na AWS antes de executar os comandos do Terraform no contexto desse projeto
+- Existem várias maneiras de fazer isso na AWS. Essa que está sendo mostrado é apenas uma forma básica usada para fins de testes
+- O uso do Terraform é para facilar o processo de criação e configuração de recursos na AWS
+- É nessário dar uma estudada nos arquivos presentes no diretório terraform para entender como tudo funciona. Esse não será o foco dessa documentação
+- O arquivo userdata.tpl contém instruções do que será executado no ambiente Linux quando a máquina EC2 for iniciada. Isso envolve instação de atualizações, docker e etc...
+- Ainda falando sobre o arquivo userdata.tpl, o deploy está vinculado com o repositório desse projeto. Pois quando o mesmo é executado será feito um clone do projeto na máquina linux e lá será executado o arquivo docker-compose-prod.yml presente no diretório raiz do projeto para finalmente subir os containers da aplicação. 
+- É claro que isso também pode ser feito de forma manual acessando a máquina....
 
 ## Deploy na AWS usando Terraform
+- Ter a imagem da applicação já enviada para o Docker Hub
+- Instalar Terraform e configurar nas variáveis de ambiente do Windows. Sugestão(https://edukti.com/como-instalar-terraform#heading-como-instalar-o-terraform-no-windows)
+- Para testar o Terraform abra um terminal e execute "terraform version". Deverá ser exibido a versão do Terraform instalada
+  - ![img.png](readme-imgs/terraform.png)
+- Configurar o SSH no windows para geração de chaves necessárias para conexão com a AWS. Sugestão(https://learn.microsoft.com/pt-br/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell#tabpanel_1_powershell)
+- Para testar a configuração do SSH abra um terminal e execute o seguinte comando: "ls ~/.ssh".
 - Criar uma conta na AWS
-
+- Acessar recurso IAM para configurar um novo usuário (https://us-east-1.console.aws.amazon.com/iam/home?region=us-east-1#/users)
+  - ![img.png](readme-imgs/criar-usuario-aws-01.png)
+  - ![img.png](readme-imgs/criar-usuario-aws-02.png)
+  - ![img.png](readme-imgs/criar-usuario-aws-03.png)
+    - O objetivo aqui é inserir as permissões abaixo 
+    - AmazonEC2ContainerRegistryFullAccess
+    - AmazonEC2FullAccess
+    - AmazonVPCFullAccess
+    - AWSMarketplaceAmiIngestion
+    - ![img.png](readme-imgs/criar-usuario-aws-04.png)
+    - ![img.png](readme-imgs/criar-usuario-aws-05.png)
+    - Agora vá em Create access key
+    - ![img.png](readme-imgs/criar-usuario-aws-06.png)
+    - ![img.png](readme-imgs/criar-usuario-aws-07.png)
+    - ![img.png](readme-imgs/criar-usuario-aws-08.png)
+    - Salve a Access key e a Secret access key ou faça o download do csv na opção Download .csv file.
+    - Clique em "Done"
+    - Pronto agora temos uma configuracação básica do usuário por parte da AWS. O próximo passo agora é gerar uma chave no windows usando a Access key e a Secret access key que foi gerada
+- Configurar Credenciais SSH no Windows para o usuário criado na AWS
+  - Abra um terminal e digite "aws configure --profile crud-api". Informe os dados solicitados
+  - ![img.png](readme-imgs/configurar-usuario-aws.png)
+  - Agora vamos criar uma chave pública/privada com base nas credenciais
+  - Criação de chave: "ssh-keygen -t ed25519"
+  - Atribuir nome a chave gerada: "C:\Users\Wesley Eduardo/.ssh/crud-api-key". (Aqui substitua pelo seu usuário apontando para onde está sua pasta .ssh)
+  - Pode dar Enter e ir seguindo até finalizar...
+  - Verifique a criação da chabe com o comando "ls ~/.ssh"
+  - ![img.png](readme-imgs/criar-chave-publica-privada.png)
+- Abra um terminal no diretório backend/deploy/terraform  
+- Execute o comando "terraform init"
+- ![img.png](readme-imgs/terraform-01.png)
+- Execute o comando "terraform plan". Esse comando fará uma validação de todos os recursos que serão criados na AWS
+- ![img.png](readme-imgs/terraform-02.png)
+- Execute o comando "terraform apply --auto-approve". Criará todos os recursos na AWS
+- Destruir estrutura que foi criada na AWS: terraform destroy --auto-approve
+- ![img.png](readme-imgs/terraform-03.png)
+- Abra o Dashboard das VPC e veja a que foi criada
+- ![img.png](readme-imgs/vpc.png)
+- Subnet criada
+- ![img.png](readme-imgs/subnet.png)
+- Tabela de rotas
+- ![img.png](readme-imgs/tabela-rotas.png)
+- Gateway
+- ![img.png](readme-imgs/gateway.png)
+- Abra Dashboard das EC2 e entre na EC2 criada
+- ![img.png](readme-imgs/ec2.png)
+- Detalhes EC2 (Aqui temos diversas informações de tudo que foi criado e congiurado) 
+- ![img.png](readme-imgs/detalhes-ec2.png)
+- Para acessar o Swagger da aplicação pegue o DNS público que fooi criado e junte com a URL do Swagger definido no application-prod.yml
 
 ## Dados abaixo ainda estão sendo organizados.....
 
@@ -72,6 +145,7 @@
 - regions: us-east-1
 - output format: json
 - Consulta diretório: ls ~/.aws
+- aws configure --profile crud
 
 ## Comandos Terraform (Instalar terraforma e jogar no path do Windows)
 - Criar os arquivos de estrutura e instalar o provider: terraform init

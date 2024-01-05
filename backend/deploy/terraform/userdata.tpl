@@ -30,7 +30,7 @@
     cd crud-angular-spring-deploy-aws-docker-postgres-terraform
     git checkout master
     git pull
-    cd deploy/docker
+    cd backend
 
 #run your docker compose file
     docker-compose -f docker-compose-prod.yml up -d
