@@ -9,3 +9,4 @@ deploy/terraform/.terraform.tfstate.lock.info
 deploy/terraform/terraform.tfstate.backup
 /backend/postgres-data/
 /backend/deploy/terraform/.terraform/
+/backend/deploy/terraform/.terraform.tfstate.lock.info
