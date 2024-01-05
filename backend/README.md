@@ -26,8 +26,9 @@
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Executar aplicação via Shell Script e Docker
-- Abrir pasta backend (Não é pelo terminal)
-- Executar o arquivo run-backend.sh
+- Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e Executar o arquivo run-backend.sh
+- Opção 2: Abrir um terminal no diretório backend en e executar: sh run-backend.sh
+- Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Dados abaixo ainda estão sendo organizados.....
 
@@ -39,6 +40,13 @@
 - Executar jar: java -jar target/crud-api-0.0.1-SNAPSHOT.jar
 - Conectar máquina EC2: ssh ec2-user@"ip_aqui"
 - Copiar jara para EC2: scp ./target/crud-api-0.0.1-SNAPSHOT.jar ec2-user@"ip_aqui":/home/ec2-user
+
+
+## Permissões Usuário AWS necessárias para deploy na EC2
+- AmazonEC2ContainerRegistryFullAccess
+- AmazonEC2FullAccess
+- AmazonVPCFullAccess
+- AWSMarketplaceAmiIngestion
 
 ## Comandos Docker úteis
 - Login Docker: docker login
@@ -52,13 +60,6 @@
 - docker logs --follow crud-api
 - docker logs --follow postgres-db
 - docker logs --follow crud-angular
-
-
-## Permissões Usuário AWS necessárias para deploy
-- AmazonEC2ContainerRegistryFullAccess
-- AmazonEC2FullAccess
-- AmazonVPCFullAccess
-- AWSMarketplaceAmiIngestion
 
 ## Após criar usuário, gerar key e secret e configurar profile - Opção "Command Line Interface (CLI)"
 - Gerar minha key e secret na AWS e salvar em algum lugar seguro
