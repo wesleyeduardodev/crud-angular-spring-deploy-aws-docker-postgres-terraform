@@ -111,8 +111,19 @@
 - ![img.png](readme-imgs/ec2.png)
 - Detalhes EC2 (Aqui temos diversas informações de tudo que foi criado e congiurado) 
 - ![img.png](readme-imgs/detalhes-ec2.png)
-- Para acessar o Swagger da aplicação pegue o DNS público que fooi criado e junte com a URL do Swagger definido no application-prod.yml
-- Exemplo de link para o Swagger: https://ec2-3-234-206-61.compute-1.amazonaws.com/crud-api/swagger-ui.html
+- Para acessar o Swagger da aplicação pegue o DNS público que foi criado e junte com a URL do Swagger definido no application-prod.yml
+- ![img.png](readme-imgs/dns.png)
+- Exemplo de link para o Swagger: http://ec2-3-236-75-170.compute-1.amazonaws.com/crud-api/swagger-ui.html (Substitua pelo seu respectivo DNS público )
+- ![img.png](readme-imgs/swagger.png)
+- Para entrar na máquina clique em "Connect"
+- ![img.png](readme-imgs/connect-ec2.png)
+- ![img.png](readme-imgs/connect.png)
+- Para validar se os containers estão ok execute o comando "docker ps"
+- ![img.png](readme-imgs/verificacao-containers.png)
+- Para acessar os logs da aplicação: docker logs --follow crud-api
+- ![img.png](readme-imgs/logs.png)
+- Para acessar os logs do abnco de dados: docker logs --follow postgres-db
+- Parar destruir todos os recursos criados na AWS, abra um terminal no diretório backend/deploy/terraform execute terraform destroy --auto-approve 
 
 ## Comandos Docker úteis
 - Login Docker: docker login
@@ -137,13 +148,11 @@
 - Copiar jara para EC2: scp ./target/crud-api-0.0.1-SNAPSHOT.jar ec2-user@"ip_aqui":/home/ec2-user
 - ls ~/.ssh
 
-## Swagger
+## Swagger na AWS
 - Prod: "DNS-EC2"/crud-api/swagger-ui.html
-- Local na porta 80: http://localhost/crud-api/swagger-ui/index.html
 
-## Test
-- http://localhost/actuator/health
-- http://ec2-100-26-4-233.compute-1.amazonaws.com/actuator/health
+## Teste básico de execução da aplicação na EC2
+- http://ec2-3-236-75-170.compute-1.amazonaws.com/actuator/health (Substitua pelo seu respectivo DNS público )
 
 ## Para analisar
 - Melhorar a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
