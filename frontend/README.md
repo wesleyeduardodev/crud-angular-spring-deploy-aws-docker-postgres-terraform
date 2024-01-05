@@ -1,5 +1,9 @@
 # **Projeto em Desenvolvimento**
 
+# Executar o projeto localmente
+- Geração da imagem: docker build -t wesleyeduardodev/crud-angular .
+- Execução do container: docker run -p 4200:4200 --name crud-angular wesleyeduardodev/crud-angular
+
 # Onde o projeto backend  está armazenado ?
 - Amazon EC2
 

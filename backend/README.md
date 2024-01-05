@@ -27,7 +27,7 @@
 
 ## Executar aplicação via Shell Script e Docker
 - Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e Executar o arquivo run-backend.sh
-- Opção 2: Abrir um terminal no diretório backend en e executar: sh run-backend.sh
+- Opção 2: Abrir um terminal no diretório backend e executar: sh run-backend.sh
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Enviar imagem a aplicação para o Docker Hub
@@ -122,8 +122,13 @@
 - ![img.png](readme-imgs/verificacao-containers.png)
 - Para acessar os logs da aplicação: docker logs --follow crud-api
 - ![img.png](readme-imgs/logs.png)
-- Para acessar os logs do abnco de dados: docker logs --follow postgres-db
+- Para acessar os logs do banco de dados: docker logs --follow postgres-db
 - Parar destruir todos os recursos criados na AWS, abra um terminal no diretório backend/deploy/terraform execute terraform destroy --auto-approve 
+
+## Deploy automatizado usando Shell Script
+- Para que o script seja executado com suceso é necessário que o docker esteja rodando e logado com seu usuário
+- Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e Executar o arquivo deploy-backend.sh
+- Opção 2: Abrir um terminal no diretório backend e executar: sh deploy-backend.sh
 
 ## Comandos Docker úteis
 - Login Docker: docker login
