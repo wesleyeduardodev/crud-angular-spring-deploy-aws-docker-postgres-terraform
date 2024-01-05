@@ -1,4 +1,10 @@
-# **Projeto em Desenvolvimento**
+
+## Requisitos Gerais
+- Docker/WSL2 instalado e configurado e executando no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
+- Node Instalado e configurado no Windows
+  - Node: 18.18.2
+  - Angular CLI: 16.2.7
+  - Package Manager: npm 9.8.1
 
 # Executar o projeto localmente
 - O primeiro passo é Subir a API do CRUD de Clientes
@@ -14,8 +20,13 @@
 - Agora abra um terminal na raiz do projeto frontend execute o comando "docker build -t wesleyeduardodev/crud-angular ." para gerar a imagem da aplicação
 - Ainda no terminal na raiz do front, execute "docker compose up -d"
 
-# Onde o projeto backend  está armazenado ?
-- Amazon EC2
+# Preparando aplicação angular para Deploy na AWS usando AmazonS3
+- Antes de publicar na S3 é preciso que antes seja feito o deploy do backend na EC2 (Ver README do projeto backend).
+- Após o deploy do backend, copie o DNS público gerado
+- ![img.png](resource/readme/ec2.png)
+- Abra o arquivo frontend/src/app/config/api.config.ts e cole o valor do DNS público na variável URL_PROD
+- Altere o valor da variável baseUrl para receber o valor da varivável URL_PROD
+- Siga os demais passos abaixo
 
 # Publicando no AmazonS3
 - Entre na pasta raiz do projeto angular e execute o comando "ng build" para fazer o buil da aplicação (será gerada  pasta dist)
@@ -46,20 +57,25 @@
 - ![img_13.png](resource/readme/img_13.png)
 - Nessa tela, desmarcamos a opção Block all public access e deixamos marcado somente as opções
 - Além disso, vamos precisar criar uma policy para garantir acesso anônimo para que os usuários possam acessar o bucket. Ainda na aba Permissions, vá em Bucket policy > Edit. Cole o conteúdo abaixo, substituindo a tag pelo nome do seu bucket:
-- {
+
+```json
+{
   "Version": "2012-10-17",
   "Statement": [
-  {
-  "Sid": "AllowPublicAccess",
-  "Effect": "Allow",
-  "Principal": "*",
-  "Action": "s3:GetObject",
-  "Resource": "arn:aws:s3:::crud-angular-app/*"
-  }
+    {
+      "Sid": "AllowPublicAccess",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::crud-angular-app/*"
+    }
   ]
-  }
+}
+```
+
 - ![img_14.png](resource/readme/img_14.png)
-- Para acessar a lista de clientes para testar informe http://crud-angular-app.s3-website-us-east-1.amazonaws.com/clients
+- Retorne na aba Properties e abra o link gerado
+- ![img.png](resource/readme/link.png)
 
 
 # Geração da imagem da aplicação

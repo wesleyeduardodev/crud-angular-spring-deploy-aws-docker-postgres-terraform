@@ -1,11 +1,11 @@
 import {HttpHeaders} from "@angular/common/http";
 
-const URL_PROD = 'http://ec2-3-235-17-192.compute-1.amazonaws.com';
+const URL_PROD = 'ec2-44-213-110-119.compute-1.amazonaws.com';
 const URL_LOCAL = 'http://localhost:8080';
 
-//TODO Criar esquema de configuração automática de ambiente de Des e Prod usando o envviroment.ts
+//TODO Criar esquema de configuração automática de ambiente de Des e Prod usando o enviroment.ts
 export const API_CONFIG = {
-  baseUrl: URL_LOCAL
+  baseUrl: URL_PROD
 }
 
 //TODO Implementar futuramente autenticação e autorização com JWT
