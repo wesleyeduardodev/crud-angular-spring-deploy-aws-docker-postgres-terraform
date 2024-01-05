@@ -49,7 +49,12 @@
 - É nessário dar uma estudada nos arquivos presentes no diretório terraform para entender como tudo funciona. Esse não será o foco dessa documentação
 - O arquivo userdata.tpl contém instruções do que será executado no ambiente Linux quando a máquina EC2 for iniciada. Isso envolve instação de atualizações, docker e etc...
 - Ainda falando sobre o arquivo userdata.tpl, o deploy está vinculado com o repositório desse projeto. Pois quando o mesmo é executado será feito um clone do projeto na máquina linux e lá será executado o arquivo docker-compose-prod.yml presente no diretório raiz do projeto para finalmente subir os containers da aplicação. 
-- É claro que isso também pode ser feito de forma manual acessando a máquina....
+- É claro que isso também pode ser feito de forma manual acessando a máquina, baixando as imagens da aplicação e executando os containers através de comandos Docker...
+- Para fazer o deploy usando outro reósitório é necessário ajustar as configurações presentes no userdata.tpl na parte de clone do projeto e execução do docker compose 
+
+## Diagrama do deploy na AWS
+- A Imagem abaixo ilustrará o fluxo de criação dos recursos
+- ![crud-api.jpg](deploy%2Fdiagram%2Fcrud-api.jpg)
 
 ## Deploy na AWS usando Terraform
 - Ter a imagem da applicação já enviada para o Docker Hub
@@ -107,24 +112,7 @@
 - Detalhes EC2 (Aqui temos diversas informações de tudo que foi criado e congiurado) 
 - ![img.png](readme-imgs/detalhes-ec2.png)
 - Para acessar o Swagger da aplicação pegue o DNS público que fooi criado e junte com a URL do Swagger definido no application-prod.yml
-
-## Dados abaixo ainda estão sendo organizados.....
-
-- Gerar build da aplicação antes de gerar a imagem: mvn clean install
-- Gerar imagem da aplicação: docker build -t wesleyeduardodev/crud-api .
-- - Gerar imagem da aplicação: docker build -t wesleyeduardodev/crud-api -f Dockerfile.test .
-- Subir container: docker run -p 8080:8080 --name crud-api wesleyeduardodev/crud-api
-
-- Executar jar: java -jar target/crud-api-0.0.1-SNAPSHOT.jar
-- Conectar máquina EC2: ssh ec2-user@"ip_aqui"
-- Copiar jara para EC2: scp ./target/crud-api-0.0.1-SNAPSHOT.jar ec2-user@"ip_aqui":/home/ec2-user
-
-
-## Permissões Usuário AWS necessárias para deploy na EC2
-- AmazonEC2ContainerRegistryFullAccess
-- AmazonEC2FullAccess
-- AmazonVPCFullAccess
-- AWSMarketplaceAmiIngestion
+- Exemplo de link para o Swagger: https://ec2-3-234-206-61.compute-1.amazonaws.com/crud-api/swagger-ui.html
 
 ## Comandos Docker úteis
 - Login Docker: docker login
@@ -138,25 +126,15 @@
 - docker logs --follow crud-api
 - docker logs --follow postgres-db
 - docker logs --follow crud-angular
+- Gerar imagem da aplicação com outro nome de arquivo: docker build -t wesleyeduardodev/crud-api -f Dockerfile.test .
+- Subir container: docker run -p 8080:8080 --name crud-api wesleyeduardodev/crud-api
 
-## Após criar usuário, gerar key e secret e configurar profile - Opção "Command Line Interface (CLI)"
-- Gerar minha key e secret na AWS e salvar em algum lugar seguro
-- Configurar profile: aws configure --profile crud
-- regions: us-east-1
-- output format: json
-- Consulta diretório: ls ~/.aws
-- aws configure --profile crud
-
-## Comandos Terraform (Instalar terraforma e jogar no path do Windows)
-- Criar os arquivos de estrutura e instalar o provider: terraform init
-- Verificar arquivos: terraform plan
-- Criar estrutura na aws: terraform apply --auto-approve (Ao pesquisar a VPC no conole AWS, pesquisar pela mesma região especificada, aqui no caso "us-east-1")
-- Destruir VPC criada: terraform destroy --auto-approve
-- Entrar na máquina: ssh -i ~/.ssh/crud-api-key ubunto@34.232.44.70
-
-## SSH
+## Comandos SSH Úteis
 - Criação de chave: ssh-keygen -t ed25519
 - Atribuir nome a chave gerada: C:\Users\Wesley Eduardo/.ssh/crud-api-key
+- Entrar na máquina: ssh -i ~/.ssh/crud-api-key ubunto@34.232.44.70
+-  Conectar máquina EC2: ssh ec2-user@"ip_aqui"
+- Copiar jara para EC2: scp ./target/crud-api-0.0.1-SNAPSHOT.jar ec2-user@"ip_aqui":/home/ec2-user
 - ls ~/.ssh
 
 ## Swagger
@@ -167,12 +145,7 @@
 - http://localhost/actuator/health
 - http://ec2-100-26-4-233.compute-1.amazonaws.com/actuator/health
 
-## JAR
-- crud-api-0.0.1-SNAPSHOT.jar
-
-
 ## Para analisar
-- Uso de volumes no container do banco para não perder os dados. Sem usar a configuração de volumes se eu deletar o container do postgres e subir de novo irei perder meus dados.
 - Melhorar a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
 
 ## Anotações Gerais
