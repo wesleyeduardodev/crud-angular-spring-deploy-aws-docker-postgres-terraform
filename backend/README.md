@@ -53,6 +53,7 @@
 - Para fazer o deploy usando outro reósitório é necessário ajustar as configurações presentes no userdata.tpl na parte de clone do projeto e execução do docker compose 
 
 ## Diagrama do deploy na AWS
+
 - A Imagem abaixo ilustrará o fluxo de criação dos recursos
 - ![crud-api.jpg](deploy%2Fdiagram%2Fcrud-api.jpg)
 

@@ -1,14 +1,21 @@
 # **Projeto em Desenvolvimento**
 
 # Executar o projeto localmente
-- Geração da imagem: docker build -t wesleyeduardodev/crud-angular .
-- Execução do container: docker run -p 4200:4200 --name crud-angular wesleyeduardodev/crud-angular
+- O primeiro passo é Subir a API do CRUD de Clientes
+  - Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e Executar o arquivo run-backend.sh
+  - Opção 2: Abrir um terminal no diretório backend e executar: sh run-backend.sh
+- Agora abra um terminal na raiz do projeto front end execute o comando "npm install" para instalar as dependências
+- Ainda no terminal, execute "npm start"
+
+# Subir o projeto via Docker
+- O primeiro passo é Subir a API do CRUD de Clientes
+  - Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e Executar o arquivo run-backend.sh
+  - Opção 2: Abrir um terminal no diretório backend e executar: sh run-backend.sh
+- Agora abra um terminal na raiz do projeto frontend execute o comando "docker build -t wesleyeduardodev/crud-angular ." para gerar a imagem da aplicação
+- Ainda no terminal na raiz do front, execute "docker compose up -d"
 
 # Onde o projeto backend  está armazenado ?
 - Amazon EC2
-
-## Ajuste para subir via Docker
-- No arquivo package.json, inserir: "start": "ng serve --host 0.0.0.0",
 
 # Publicando no AmazonS3
 - Entre na pasta raiz do projeto angular e execute o comando "ng build" para fazer o buil da aplicação (será gerada  pasta dist)

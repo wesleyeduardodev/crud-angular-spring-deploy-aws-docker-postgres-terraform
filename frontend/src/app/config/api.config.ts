@@ -1,7 +1,7 @@
 import {HttpHeaders} from "@angular/common/http";
 
 const URL_PROD = 'http://ec2-3-235-17-192.compute-1.amazonaws.com';
-const URL_LOCAL = 'http://localhost:80';
+const URL_LOCAL = 'http://localhost:8080';
 
 //TODO Criar esquema de configuração automática de ambiente de Des e Prod usando o envviroment.ts
 export const API_CONFIG = {
