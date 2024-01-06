@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api/v1/clients")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public interface ClientAPI {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
