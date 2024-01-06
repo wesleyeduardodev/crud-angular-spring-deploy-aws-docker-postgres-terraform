@@ -20,7 +20,7 @@ echo "Login realizado com sucesso!"
 
 echo ""
 echo "Atualizando imagem no Docker Hub..."
-docker docker push wesleyeduardodev/crud-api
+docker push wesleyeduardodev/crud-api
 echo ""
 echo "Imagem atualizada com sucesso!"
 
