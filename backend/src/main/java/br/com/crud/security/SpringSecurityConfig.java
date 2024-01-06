@@ -28,13 +28,12 @@ public class SpringSecurityConfig {
     private String password;
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
                 .requestMatchers("/swagger-ui/**", "*.html")
                 .permitAll()
@@ -44,11 +43,11 @@ public class SpringSecurityConfig {
         return http.build();
     }
 
-  /*  @Bean
+    @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(List.of("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST","PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS", "HEAD"));
         configuration.setAllowCredentials(true);
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Requestor-Type"));
         configuration.setExposedHeaders(List.of("X-Get-Header"));
@@ -56,17 +55,15 @@ public class SpringSecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }*/
+    }
 
     @Bean
-    public UserDetailsService userDetailsService(){
-
-        UserDetails usuarioCrud = User.builder()
+    public UserDetailsService userDetailsService() {
+        UserDetails usuarioGenerico = User.builder()
                 .username(user)
                 .password(passwordEncoder().encode(password))
-                .roles("USER")
+                .roles("admin")
                 .build();
-
-        return new InMemoryUserDetailsManager(usuarioCrud);
+        return new InMemoryUserDetailsManager(usuarioGenerico);
     }
 }
