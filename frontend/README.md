@@ -48,6 +48,7 @@
 - Após a criação será mostrado na lista de buckets
 - ![img_3.png](resource/readme/img_3.png)
 - Entre no bucket criado e faça upload de todos os arquivos dentro de pasta dist que foi gerada com o comando ng build
+- Lembre de fazer o upload também da pasta assets
 - ![img_4.png](resource/readme/img_4.png)
 - ![img_5.png](resource/readme/img_5.png)
 - ![img_6.png](resource/readme/img_6.png)
@@ -86,7 +87,8 @@
 - Retorne na aba Properties e abra o link gerado
 - ![img.png](resource/readme/link.png)
 
-- ![img.png](resource/readme/aplicacao_amazons3.png)
+- ![img.png](resource/readme/home-s3.png)
+- ![img_1.png](resource/readme/list.png)
 
 # Geração da imagem da aplicação
 - Geração da imagem: docker build -t wesleyeduardodev/crud-angular .
