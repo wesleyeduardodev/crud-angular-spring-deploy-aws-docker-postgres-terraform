@@ -1,10 +1,16 @@
 
 ## Requisitos Gerais
-- Docker/WSL2 instalado e configurado e executando no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
-- Node Instalado e configurado no Windows
+- Docker/WSL2 instalado e configurado e executando no ambiente Windows (Para rodar com docker). Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
+- Node Instalado e configurado no Windows (Para rodar localmente)
   - Node: 18.18.2
   - Angular CLI: 16.2.7
   - Package Manager: npm 9.8.1
+
+# Telas da Aplicação CRUD Clientes
+- ![img.png](resource/readme/home.png)
+- ![img.png](resource/readme/create.png)
+- ![img.png](resource/readme/listagem.png)
+- ![img.png](resource/readme/delete.png)
 
 # Executar o projeto localmente
 - O primeiro passo é Subir a API do CRUD de Clientes
@@ -27,6 +33,8 @@
 - Abra o arquivo frontend/src/app/config/api.config.ts e cole o valor do DNS público na variável URL_PROD
 - Importante, colocar o "http:/" antes do DNS. Ficará da seguinte forma como um exemplo: http://ec2-3-239-241-205.compute-1.amazonaws.com
 - Altere o valor da variável baseUrl para receber o valor da varivável URL_PROD
+- O arquivo api.config.ts ficará conforme imagem abaixo
+- ![img.png](resource/readme/config.png)
 - Siga os demais passos abaixo
 
 # Publicando no AmazonS3
