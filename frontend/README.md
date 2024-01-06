@@ -92,24 +92,10 @@
 - Geração da imagem: docker build -t wesleyeduardodev/crud-angular .
 - Execução do container: docker run -p 4200:4200 --name crud-angular wesleyeduardodev/crud-angular
 
-# LINKS GERAIS
-- Aplicação Backend Spring: http://ec2-3-235-17-192.compute-1.amazonaws.com
-- Swagger: http://ec2-3-235-17-192.compute-1.amazonaws.com/crud-api/swagger-ui/index.html
-
-# Instação do Projeto
+# Comandos úteis
 - Instalar o nodeJs: https://nodejs.org/en. Versão usada para executar o projeto: 18.18.2
 - Verificar versão npm: npm -version
 - Intalar Angular CLI: npm install -g @angular/cli
-
-# Dados comando ng version
-Angular CLI: 16.2.7
-Node: 18.18.2
-Package Manager: npm 9.8.1
-
-# CrudWeb
-
-- Antes de executar o projeto executar o comando npm install, para instalar as dependências
-- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 
 ## Development server
 
