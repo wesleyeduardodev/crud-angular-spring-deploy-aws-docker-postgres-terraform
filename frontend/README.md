@@ -86,6 +86,7 @@
 - Retorne na aba Properties e abra o link gerado
 - ![img.png](resource/readme/link.png)
 
+- ![img.png](resource/readme/aplicacao_amazons3.png)
 
 # Geração da imagem da aplicação
 - Geração da imagem: docker build -t wesleyeduardodev/crud-angular .
