@@ -1,12 +1,15 @@
 
+## Swagger da API rodando na Amazon EC2
+- http://ec2-44-201-16-4.compute-1.amazonaws.com/crud-api/swagger-ui/index.html
+
 ## Requisitos Gerais
-- Docker/WSL2 instalado e configurado e executando no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
+- Docker/WSL2 instalado, configurado e executando no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
 - Java 17 configurado nas variáveis de ambiente do Windows. Sugestão(https://corretto.aws/downloads/latest/amazon-corretto-17-x64-windows-jdk.zip)
 - Maven 3+ configurado nas variáveis de ambiente do Windows. Sugestão(https://dlcdn.apache.org/maven/maven-3/3.9.6/source/apache-maven-3.9.6-src.zip)
 
 ## Executar aplicação localmente via linha de comando
 - Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend)
-- Executar comando "mvn clean install" para gerar o target do projeto.
+- Executar comando "mvn clean install" para gerar o JAR da aplicação
 - Ainda com o terminal na pasta backend, executar "docker compose up -d" para subir o banco de dados postgres
 - Entrar no diretório /target
 - Executar: java -jar crud-api-0.0.1-SNAPSHOT.jar
@@ -20,19 +23,19 @@
 
 ## Executar aplicação localmente via Docker
 - Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
-- Executar o comando "mvn clean install" para gerar o target do projeto.
+- Executar comando "mvn clean install" para gerar o JAR da aplicação
 - Executar o comando "docker build -t wesleyeduardodev/crud-api ." para gerar a imagem da aplicação 
 - Executar "docker compose -f docker-compose-dev.yml up -d" para subir o banco de dados postgres e a aplicação
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Executar aplicação via Shell Script e Docker
-- Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e Executar o arquivo run-backend.sh
+- Opção 1: Abrir pasta backend sem ser pelo terminal (explorar via windows) e executar o arquivo run-backend.sh
 - Opção 2: Abrir um terminal no diretório backend e executar: sh run-backend.sh
 - Swagger: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Enviar imagem a aplicação para o Docker Hub
 - Criar um conta no Docker Hub
-- Abra um terminal no diretório backend
+- Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
 - Execute o comando "mvn clean install" para gerar o JAR da aplicação
 - Execute o comando "docker build -t wesleyeduardodev/crud-api ." para gerar a imagem da aplicação
 - Abra um terminal do WSL2/Linux ou até mesmo do PowerShell/CMD e digite o comando "docker images" para verificar a iamgem criada
@@ -43,19 +46,26 @@
 - ![img.png](readme-imgs/envio-imagem-docker-hub.png)
 - ![img.png](readme-imgs/imagem-docker-hub.png)
 
+## Sobre o método de deploy com Terraform usado nesse projeto
+- A construção dos scripts presentes no diretório backend/deploy/terraform foram criados com base no conteúdo do canal https://www.youtube.com/@marceloaraujodev através dos vídeos (Deploy API Java Springboot na AWS com Docker e Terraform - Level  1, 2 e 3)
+- O conteúdo dos vídeos explica com mais detalhes cada script criado
+
 ## Pontos importantes sobre o deploy na AWS antes de executar os comandos do Terraform no contexto desse projeto
-- Existem várias maneiras de fazer isso na AWS. Essa que está sendo mostrado é apenas uma forma básica usada para fins de testes
+- Existem várias maneiras de fazer deploy de uma API na AWS. Essa que está sendo mostrado é apenas uma forma básica usada para fins de testes
 - O uso do Terraform é para facilar o processo de criação e configuração de recursos na AWS
-- É nessário dar uma estudada nos arquivos presentes no diretório terraform para entender como tudo funciona. Esse não será o foco dessa documentação
-- O arquivo userdata.tpl contém instruções do que será executado no ambiente Linux quando a máquina EC2 for iniciada. Isso envolve instação de atualizações, docker e etc...
+- O arquivo userdata.tpl presente no diretório terraform contém instruções do que será executado no ambiente Linux quando a máquina EC2 for iniciada. Isso envolve instação de atualizações, docker e etc...
 - Ainda falando sobre o arquivo userdata.tpl, o deploy está vinculado com o repositório desse projeto. Pois quando o mesmo é executado será feito um clone do projeto na máquina linux e lá será executado o arquivo docker-compose-prod.yml presente no diretório raiz do projeto para finalmente subir os containers da aplicação. 
-- É claro que isso também pode ser feito de forma manual acessando a máquina, baixando as imagens da aplicação e executando os containers através de comandos Docker...
+- É claro que isso também pode ser feito de forma manual acessando a máquina EC2, baixando as imagens da aplicação e executando os containers através de comandos Docker...
 - Para fazer o deploy usando outro reósitório é necessário ajustar as configurações presentes no userdata.tpl na parte de clone do projeto e execução do docker compose 
 
 ## Diagrama do deploy na AWS
-
 - A Imagem abaixo ilustrará o fluxo de criação dos recursos
 - ![img.png](readme-imgs/crud-api.jpg)
+
+## Instalação AWS CLI
+- Para rodar comandos AWS nos terminais Windows é necessário instalar o AWS CLI (https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html)
+- Para validar a instalação abra um terminal e digite "aws --version"
+- ![img.png](readme-imgs/aws-cli.png)
 
 ## Deploy na AWS usando Terraform
 - Ter a imagem da applicação já enviada para o Docker Hub
@@ -90,7 +100,7 @@
   - Criação de chave: "ssh-keygen -t ed25519"
   - Atribuir nome a chave gerada: "C:\Users\Wesley Eduardo/.ssh/crud-api-key". (Aqui substitua pelo seu usuário apontando para onde está sua pasta .ssh)
   - Pode dar Enter e ir seguindo até finalizar...
-  - Verifique a criação da chabe com o comando "ls ~/.ssh"
+  - Verifique a criação da chave com o comando "ls ~/.ssh"
   - ![img.png](readme-imgs/criar-chave-publica-privada.png)
 - Abra um terminal no diretório backend/deploy/terraform  
 - Execute o comando "terraform init"
@@ -159,9 +169,6 @@
 
 ## Teste básico de execução da aplicação na EC2
 - http://ec2-3-236-75-170.compute-1.amazonaws.com/actuator/health (Substitua pelo seu respectivo DNS público )
-
-## Para analisar
-- Melhorar a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
 
 ## Anotações Gerais
 - Em cenários de aplicações reais avaliar usar a solução Amazon RDS Postgres por ex. Manter o banco isolado e seguro.

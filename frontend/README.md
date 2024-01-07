@@ -1,4 +1,7 @@
 
+## Link do projeto rodando na Amazon S3
+- http://crud-api-angular.s3-website-us-east-1.amazonaws.com/home
+
 ## Requisitos Gerais
 - Docker/WSL2 instalado e configurado e executando no ambiente Windows (Para rodar com docker). Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
 - Node Instalado e configurado no Windows (Para rodar localmente)
@@ -98,6 +101,9 @@
 - Instalar o nodeJs: https://nodejs.org/en. Versão usada para executar o projeto: 18.18.2
 - Verificar versão npm: npm -version
 - Intalar Angular CLI: npm install -g @angular/cli
+
+## Para analisar
+- Melhorar a criação da imagem e container do angular. Está com tamanho grande e consumindo muita memória
 
 ## Development server
 
