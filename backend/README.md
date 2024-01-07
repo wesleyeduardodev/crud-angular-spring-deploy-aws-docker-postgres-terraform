@@ -48,7 +48,7 @@
 
 ## Sobre o método de deploy com Terraform usado nesse projeto
 - A construção dos scripts presentes no diretório backend/deploy/terraform foram criados com base no conteúdo do canal https://www.youtube.com/@marceloaraujodev através dos vídeos (Deploy API Java Springboot na AWS com Docker e Terraform - Level  1, 2 e 3)
-- O conteúdo dos vídeos explica com mais detalhes cada script criado
+- O conteúdo dos vídeos detalham bem cada script criado
 
 ## Pontos importantes sobre o deploy na AWS antes de executar os comandos do Terraform no contexto desse projeto
 - Existem várias maneiras de fazer deploy de uma API na AWS. Essa que está sendo mostrado é apenas uma forma básica usada para fins de testes
