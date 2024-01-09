@@ -38,7 +38,7 @@
 - Abrir um terminal na pasta do projeto backend (/crud-angular-spring-deploy-aws-docker-postgres-terraform/backend )
 - Execute o comando "mvn clean install" para gerar o JAR da aplicação
 - Execute o comando "docker build -t wesleyeduardodev/crud-api ." para gerar a imagem da aplicação
-- Abra um terminal do WSL2/Linux ou até mesmo do PowerShell/CMD e digite o comando "docker images" para verificar a iamgem criada
+- Abra um terminal do WSL2/Linux ou até mesmo do PowerShell/CMD e digite o comando "docker images" para verificar a imagem criada
 - ![img.png](readme-imgs/consulta-imamgem-aplicao.png)
 - Execute o comando "docker login" para logar/sincronizar com a conta no Docker Hub
 - ![img.png](readme-imgs/docker-login.png)
