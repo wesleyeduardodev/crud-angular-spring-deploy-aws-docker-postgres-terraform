@@ -1,6 +1,6 @@
 
 ## Swagger da API rodando na Amazon EC2
-- http://ec2-44-201-16-4.compute-1.amazonaws.com/crud-api/swagger-ui/index.html
+- [http://ec2-44-201-16-4.compute-1.amazonaws.com/crud-api/swagger-ui/index.html](http://ec2-100-24-120-194.compute-1.amazonaws.com/crud-api/swagger-ui/index.html)
 
 ## Requisitos Gerais
 - Docker/WSL2 instalado, configurado e executando no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
