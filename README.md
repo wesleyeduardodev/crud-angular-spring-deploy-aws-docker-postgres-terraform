@@ -4,6 +4,7 @@
 - Opção 2: Abrir pasta raiz do projeto via windows e executar o arquivo "sh executar-projeto.sh".
 
 ## Links para uso da aplicação no ambiente local
+- Front: http://localhost:4200
 - Swagger da API: http://localhost:8080/crud-api/swagger-ui.html
 
 ## Requisitos Gerais para execução do projeto em ambiente local
