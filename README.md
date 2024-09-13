@@ -9,8 +9,6 @@
 
 ## Requisitos Gerais para execução do projeto em ambiente local
 - Docker/WSL2 instalado e configurado no ambiente Windows. Sugestão(https://github.com/codeedu/wsl2-docker-quickstart)
-- Java 17 configurado nas variáveis de ambiente do Windows. Sugestão(https://corretto.aws/downloads/latest/amazon-corretto-17-x64-windows-jdk.zip)
-- Maven 3+ configurado nas variáveis de ambiente do Windows. Sugestão(https://dlcdn.apache.org/maven/maven-3/3.9.6/source/apache-maven-3.9.6-src.zip)
 
 ## Objetivos do projeto
 - O foco desse projeto é testar o deploy de uma aplicação estilo CRUD dentro da AWS usando Angular, Spring, Docker, Postgres e Terraform. Portanto, o projeto da API não seguirá os padrôes RESTFul, tampouco aspectos como clean code, SOLID, Testes Unitários/Integração Design Patterns e etc.
