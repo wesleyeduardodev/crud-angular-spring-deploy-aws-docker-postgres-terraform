@@ -21,7 +21,7 @@ services:
 
   crud-api:
     build:
-      context: ../../backend
+      context: ./backend
       dockerfile: Dockerfile.test
     container_name: crud-api
     image: wesleyeduardodev/crud-api:latest
@@ -45,7 +45,7 @@ services:
 
   crud-angular:
     build:
-      context: ../../frontend
+      context: ./frontend
       dockerfile: Dockerfile
     image: wesleyeduardodev/crud-angular
     container_name: crud-angular

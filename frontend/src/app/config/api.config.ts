@@ -5,7 +5,7 @@ const URL_LOCAL = 'http://localhost:8080';
 
 //TODO Criar esquema de configuração automática de ambiente de Des e Prod usando o enviroment.ts
 export const API_CONFIG = {
-  baseUrl: URL_PROD
+  baseUrl: URL_LOCAL
 }
 
 //TODO Implementar futuramente autenticação e autorização com JWT
